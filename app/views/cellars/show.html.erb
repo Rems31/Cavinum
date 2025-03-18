@@ -1,24 +1,53 @@
 <div>
-  <h1>Bienvenue <%= current_user.first_name %> !</h1>
-</div>
+  <div>
+    <h1>Bienvenue <%= current_user.first_name %> !</h1>
+  </div>
 
-<div>
-  <input type="text" placeholder="Appellation, nom, cépage..">
-  <button type="submit">Rechercher</button>
-</div>
+  <div class="d-flex justify-content-center">
+    <input type="text" placeholder="Appellation, nom, cépage..">
+    <button type="submit">Rechercher</button>
+  </div>
 
-<div>
-  <h3>Ma cave</h3>
-
-  <% current_user.cellar.slots.each do |slot| %>
-    <% if slot.bottle.present? %>
-      <div class="bottle-card">
-        <%# <%= cl_image_tag(slot.bottle.photo.key, width: 400, height: 300, crop: :fill) %>
-        <p><strong><%= slot.bottle.name %></strong></p>
-        <p><%= slot.bottle.appellation %> - <%= slot.bottle.variety %></p>
-        <p><%= slot.name %> (Emplacement)</p>
+   <div class="button-container sticky-button">
+    <%= link_to "+ Ajouter une bouteille", new_bottle_path, class: "button button_purple" %>
+  </div>
+  
+  <div class="container mt-4">
+    <h3>Vitrine</h3>
+    <div class="overflow-auto vitrine-carousel">
+      <div class="d-flex gap-3">
+        <% Bottle.order(created_at: :desc).limit(5).each do |bottle| %>
+          <%= link_to bottle_path(bottle), class: "text-decoration-none" do %>
+            <div class="card flex-shrink-0" style="width: 18rem;">
+              <% if bottle.photo.attached? %>
+                <%= cl_image_tag(bottle.photo.key, width: 300, height: 200, crop: :fill, class: "card-img-top") %>
+              <% end %>
+              <div class="card-body text-center">
+                <h5 class="card-title"><%= bottle.name %></h5>
+                <p class="card-text"><%= bottle.appellation %> - <%= bottle.variety %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 
+  <div>
+    <h3>Ma cave</h3>
+    <% current_user.cellar.slots.each do |slot| %>
+      <% if slot.bottle.present? %>
+        <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
+          <div class="d-flex border border-2 p-3">
+
+            <div>
+              <p class="p-2 text-muted"><strong><%= slot.bottle.name %></strong></p>
+              <p class="p-2 text-muted"><%= slot.bottle.appellation %> - <%= slot.bottle.variety %></p>
+              <p class="p-2 text-muted"><%= slot.name %> (Emplacement)</p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
