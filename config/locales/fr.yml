@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    models:
+      bottle: Bouteille
+      cellar: Cave
+      slot: Emplacement
+      user: Utilisateur
+    attributes:
+      bottle:
+        name: Nom
+        appellation: Appellation
+        kind: Type
+        vintage: Millésime
+        area: Région
+        variety: Cépage
+        notes: Notes
+        slot: Emplacement

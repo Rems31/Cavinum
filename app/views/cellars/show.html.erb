@@ -1,5 +1,10 @@
 <div>
-  <div>
+  <div class="d-flex justify-content-between align-items-center">
+    <%= link_to "Pics", root_path, class: "btn btn-primary text-decoration-none" %>
+    <%= link_to "+", new_bottle_path, class: "btn btn-primary text-decoration-none" %>
+  </div>
+
+  <div class="mt-4">
     <h1>Bienvenue <%= current_user.first_name %> !</h1>
   </div>
 
@@ -8,10 +13,6 @@
     <button type="submit">Rechercher</button>
   </div>
 
-   <div class="button-container sticky-button">
-    <%= link_to "+ Ajouter une bouteille", new_bottle_path, class: "button button_purple" %>
-  </div>
-  
   <div class="container mt-4">
     <h3>Vitrine</h3>
     <div class="overflow-auto vitrine-carousel">
@@ -23,8 +24,8 @@
                 <%= cl_image_tag(bottle.photo.key, width: 300, height: 200, crop: :fill, class: "card-img-top") %>
               <% end %>
               <div class="card-body text-center">
-                <h5 class="card-title"><%= bottle.name %></h5>
-                <p class="card-text"><%= bottle.appellation %> - <%= bottle.variety %></p>
+                <h5 class="card-title"><strong><%= bottle.name %></strong></h5>
+                <p class="card-text"><%= bottle.appellation %> <br> <%= bottle.variety %></p>
               </div>
             </div>
           <% end %>
@@ -33,17 +34,17 @@
     </div>
   </div>
 
-  <div>
+  <div class="m-4">
     <h3>Ma cave</h3>
     <% current_user.cellar.slots.each do |slot| %>
       <% if slot.bottle.present? %>
         <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
           <div class="d-flex border border-2 p-3">
 
-            <div>
+            <div class="d-flex">
               <p class="p-2 text-muted"><strong><%= slot.bottle.name %></strong></p>
               <p class="p-2 text-muted"><%= slot.bottle.appellation %> - <%= slot.bottle.variety %></p>
-              <p class="p-2 text-muted"><%= slot.name %> (Emplacement)</p>
+              <p class="p-2 text-muted"><%= slot.name %></p>
             </div>
           </div>
         <% end %>
