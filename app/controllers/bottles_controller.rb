@@ -12,10 +12,8 @@ class BottlesController < ApplicationController
 
   def create
     @bottle = Bottle.new(bottle_params)
-    @bottle.user = current_user
-
     if @bottle.save
-      redirect_to bottles_path(@bottle), notice: "Bouteille créee avec succès."
+      redirect_to root_path, notice: "Bouteille créee avec succès."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,16 +31,16 @@ class BottlesController < ApplicationController
 
   def destroy
     @bottle.destroy
-    redirect_to bottles_path, status: :see_other, notice: "Bouteille supprimée avec succès."
+    redirect_to root_path, status: :see_other, notice: "Bouteille supprimée avec succès."
   end
 
   private
 
-  def set_bottles
+  def set_bottle
     @bottle = Bottle.find(params[:id])
   end
 
   def bottle_params
-    params.require(:bottle).permit(:name, :appellation, :type, :vintage, :area, :variety, :photo, :notes)
+    params.require(:bottle).permit(:name, :appellation, :kind, :vintage, :area, :variety, :photo, :notes, :slot_id)
   end
 end
