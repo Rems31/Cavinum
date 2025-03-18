@@ -9,7 +9,6 @@
 
 <div>
   <h3>Ma cave</h3>
-
   <% current_user.cellar.slots.each do |slot| %>
     <% if slot.bottle.present? %>
       <div class="bottle-card">

@@ -1,0 +1,17 @@
+
+  <div class="background">
+  <div class= "mt-4">
+<%= simple_form_for(@bottle) do |f| %>
+  <%= f.input :name, placeholder: "Nom" %>
+  <%= f.input :appellation, placeholder: "Appellation" %>
+  <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
+  <%= f.input :vintage, placeholder: "Quelle année" %>
+  <%= f.input :area, placeholder: "Quelle région" %>
+  <%= f.input :variety, placeholder: "Quel cépage" %>
+  <%= f.input :notes, placeholder: "Ajouter une description" %>
+  <%= f.input :photo, placeholder: "Ajouter une photo" %>
+  <%= f.button :submit, "Modifier la bouteille" %>
+<% end %>
+</div>
+<%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
+</div>
