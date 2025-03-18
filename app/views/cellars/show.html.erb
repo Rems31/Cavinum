@@ -7,8 +7,6 @@
 </div>
 <div>
   <h3>Ma cave</h3>
-  <%# <% @bottles.each do |bottle| %>
-  <%# <h5><b><%= bottle.photo style: "height: 248px; width: 248px; object-fit: cover; margin: auto"</b></h5> %>
-  <%# <p><%= bottle.name %>
-  <%# <% end %>
+  <%= cl_image_tag("bottle.photo.key",
+      width: 400, height: 300, crop: :fill) %>
 </div>
