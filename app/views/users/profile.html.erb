@@ -1,0 +1,12 @@
+<div class="container text-center mt-4">
+  <h1>Mon Profil</h1>
+
+  <% if @user.photo.attached? %>
+    <%= image_tag @user.photo, class: "rounded-circle border border-3", width: 150, height: 150 %>
+  <% else %>
+    <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 150, height: 150, style: "object-fit: cover" %>
+  <% end %>
+
+  <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+  <p><strong>Email :</strong> <%= @user.email %></p>
+</div>
