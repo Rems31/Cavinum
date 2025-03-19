@@ -3,7 +3,9 @@
     <%= link_to profile_path do %>
       <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 50, height: 50, style: "object-fit: cover" %>
     <% end %>
-    <%=  link_to "+", new_bottle_path, class: "btn btn-primary text-decoration-none rounded-circle" %>
+    <%=  link_to new_bottle_path do %>
+      <i class="fa-solid fa-plus fa-2xl" style="color: #000000;"></i> <!-- Icône Bootstrap -->
+    <% end %>
   </div>
 
   <div class="mt-4 d-flex justify-content-center">
@@ -17,7 +19,7 @@
             class: "form-control background",
             placeholder: "Appellation, nom.."
         %>
-      <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Rechercher", name: "", class: "background" %>
     <% end %>
   </div>
 
