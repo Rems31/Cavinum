@@ -10,6 +10,7 @@ class BottlesController < ApplicationController
 
   def new
     @bottle = Bottle.new
+    @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
   end
 
   def create
