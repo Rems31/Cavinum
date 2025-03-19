@@ -18,7 +18,7 @@ puts "Cellars destroyed"
 User.destroy_all
 puts "Users destroyed"
 
-user1 = User.create!(email: "gerard@gmail.com", first_name: "Gérard", last_name: "La Villageoise", password: "abcdefg")
+user1 = User.create!(email: "gerard@gmail.com", first_name: "Gérard", last_name: "Dumoulin", password: "abcdefg")
 
 Cellar.create!(user: user1, height: 5, width: 5)
 

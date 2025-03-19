@@ -1,17 +1,32 @@
-<div class="background">
-  <div class= "mt-4">
-<%= simple_form_for(@bottle) do |f| %>
-  <%= f.input :name, placeholder: "Nom" %>
-  <%= f.input :appellation, placeholder: "Appellation" %>
-  <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
-  <%= f.input :vintage, placeholder: "Millésime" %>
-  <%= f.input :area, placeholder: "Région" %>
-  <%= f.input :variety, placeholder: "Cépage" %>
-  <%= f.input :notes, placeholder: "Notes" %>
-  <%= f.association :slot, as: :radio_buttons %>
-  <%= f.input :photo, placeholder: "Ajouter une photo" %>
-  <%= f.button :submit, "Créer la bouteille" %>
-<% end %>
-</div>
-<%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
+<div>
+   <%= link_to root_path, class: "btn btn-primary m-4" do %>
+      <i class="fa-solid fa-left-long"></i> <!-- Icône Bootstrap -->
+    <% end %>
+  <div class="mt-4">
+    <%= simple_form_for(@bottle) do |f| %>
+      <%= f.input :name, placeholder: "Nom" %>
+      <%= f.input :appellation, placeholder: "Appellation" %>
+      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Sélectionner un type" %>
+      <%= f.input :vintage, placeholder: "Millésime" %>
+      <%= f.input :area, placeholder: "Région" %>
+      <%= f.input :variety, placeholder: "Cépage" %>
+      <%= f.input :notes, placeholder: "Notes" %>
+
+      <!-- Slots disponibles uniquement -->
+      <div class="mb-3">
+        <%= f.label :slot_id, "Emplacement disponible" %>
+        <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
+          <div class="form-check">
+            <%= s.radio_button(class: "form-check-input") %>
+            <%= s.label(class: "form-check-label") %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.input :photo, placeholder: "Ajouter une photo" %>
+      <%= f.button :submit, "Créer la bouteille", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
 </div>

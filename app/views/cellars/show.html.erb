@@ -1,31 +1,33 @@
 <div>
-  <div class="d-flex justify-content-between align-items-center">
-    <%= link_to "Pics", profile_path, class: "btn btn-primary text-decoration-none" %>
-    <%= link_to "+", new_bottle_path, class: "btn btn-primary text-decoration-none" %>
+  <div class="d-flex justify-content-between align-items-center p-4">
+    <%= link_to profile_path do %>
+      <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 50, height: 50, style: "object-fit: cover" %>
+    <% end %>
+    <%=  link_to "+", new_bottle_path, class: "btn btn-primary text-decoration-none rounded-circle" %>
   </div>
 
-  <div class="mt-4">
-    <h1>Bienvenue <%= current_user.first_name %> !</h1>
+  <div class="mt-4 d-flex justify-content-center">
+    <h1>Bonjour <%= current_user.first_name %> </h1>
   </div>
 
   <div class="d-flex justify-content-center">
     <%= form_with url: root_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "form-control background",
             placeholder: "Appellation, nom.."
         %>
       <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
 
-  <div class="container mt-4">
+  <div class="container mt-4 p-4">
     <h3>Vitrine</h3>
     <div class="carousel-home">
-      <div class="d-flex gap-3 carousel-element vitrine-carousel">
+      <div class="d-flex gap-3">
         <% @bottles.order(created_at: :desc).limit(5).each do |bottle| %>
           <%= link_to bottle_path(bottle), class: "text-decoration-none" do %>
-            <div class="card flex-shrink-0" style="width: 18rem;">
+            <div class="card flex-shrink-0 background-darker" style="width: 18rem;">
               <% if bottle.photo.attached? %>
                 <%= cl_image_tag(bottle.photo.key, width: 300, height: 200, crop: :fill, class: "card-img-top") %>
               <% end %>
@@ -42,18 +44,21 @@
 
   <div class="m-4">
     <h3>Ma cave</h3>
-    <% current_user.cellar.slots.each do |slot| %>
-      <% if slot.bottle.present? %>
-        <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
-          <div class="border border-2 p-3">
-            <div class="d-flex">
-              <p class="p-2 text-muted"><strong><%= slot.bottle.name %></strong></p>
-              <p class="p-2 text-muted"><%= slot.bottle.appellation %></p>
-              <p class="p-2 text-muted"><%= slot.name %></p>
-            </div>
-          </div>
+    <div class="carousel-cave">
+      <div class="d-flex flex-column">
+        <% current_user.cellar.slots.each do |slot| %>
+          <% if slot.bottle.present? %>
+            <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
+              <div class="card p-3 m-1 background-darker" style="width: 22rem; height: 80px;">
+                <div class="position-relative">
+                  <p class="position-absolute"><strong><%= slot.bottle.name %></strong><br><%= slot.bottle.appellation %></p>
+                  <p class="position-absolute" style="top: 10px; right: 0;"><%= slot.name %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 </div>

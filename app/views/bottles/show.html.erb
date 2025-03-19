@@ -1,17 +1,22 @@
-<%= cl_image_tag(@bottle.photo.key, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") if @bottle.photo.attached? %>
+<div class="container">
+  <div class="m-4">
+    <%= link_to root_path, class: "btn btn-primary" do %>
+        <i class="fa-solid fa-left-long"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= cl_image_tag(@bottle.photo.key, style: "height: 248px; width: 248px; object-fit: cover; border-radius: 10px; margin: auto") if @bottle.photo.attached? %>
 
-<h4><b><%= @bottle.name %></b></h4>
-<p><%= @bottle.appellation%></p>
-<p><%= @bottle.kind %></p>
-<p><%= @bottle.vintage %></p>
-<p><%= @bottle.area %></p>
-<p><%= @bottle.variety %></p>
-<p><%= @bottle.notes %></p>
-<div class= "mb-3">
-
-</div>
-<div class= "mb-3">
-<%= link_to "Retour vers ma cave", root_path %>
-<%= link_to "Modifier une bouteille", edit_bottle_path(@bottle) %>
-<%= link_to "Supprimer une bouteille", bottle_path(@bottle), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" } %>
+      <h4><b><%= @bottle.name %></b></h4>
+      <p><%= @bottle.appellation%></p>
+      <p><%= @bottle.kind %></p>
+      <p><%= @bottle.vintage %></p>
+      <p><%= @bottle.area %></p>
+      <p><%= @bottle.variety %></p>
+      <p><%= @bottle.notes %></p>
+  </div>
+  <div class= "mb-3">
+    <%= link_to "Modifier une bouteille", edit_bottle_path(@bottle) %>
+    <%= link_to "Supprimer une bouteille", bottle_path(@bottle), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" } %>
+  </div>
 </div>
