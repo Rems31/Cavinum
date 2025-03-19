@@ -1,6 +1,7 @@
 <div class="background">
   <div class= "mt-4">
 <%= simple_form_for(@bottle) do |f| %>
+  <%= f.input :photo, placeholder: "Ajouter une photo" %>
   <%= f.input :name, placeholder: "Nom" %>
   <%= f.input :appellation, placeholder: "Appellation" %>
   <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
@@ -8,9 +9,23 @@
   <%= f.input :area, placeholder: "Région" %>
   <%= f.input :variety, placeholder: "Cépage" %>
   <%= f.input :notes, placeholder: "Notes" %>
+
+ <div data-controller= "wine-cellar-slot">
+  <button class="btn btn-secondary btn-lg"
+  data-action="click->wine-cellar-slot#open">
+      Choisir l'emplacement de la bouteille
+    </button>
+
+  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
+    <div class="cellar-grid">
   <%= f.association :slot, as: :radio_buttons %>
-  <%= f.input :photo, placeholder: "Ajouter une photo" %>
-  <%= f.button :submit, "Créer la bouteille" %>
+  <%= f.button :submit, "Valider" %>
+  <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
+  </div>
+
+  </div>
+
+
 <% end %>
 </div>
 <%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
