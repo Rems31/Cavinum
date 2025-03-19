@@ -3,6 +3,8 @@
   <head>
     <title>Cavinum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,9 +13,13 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "shared/flashes" %>
-      <%= yield %>
+    <div class="container-fluid all-pages">
+      <div class="row">
+        <div class="col-12">
+          <%= render "shared/flashes" %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
