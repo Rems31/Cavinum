@@ -9,12 +9,14 @@
 #   end
 require "open-uri"
 
-User.destroy_all
-puts "Users destroyed"
-Cellar.destroy_all
-puts "Cellars destroyed"
+Bottle.destroy_all
+puts "Bottles destroyeds"
 Slot.destroy_all
 puts "Slots destroyed"
+Cellar.destroy_all
+puts "Cellars destroyed"
+User.destroy_all
+puts "Users destroyed"
 
 user1 = User.create!(email: "gerard@gmail.com", first_name: "Gérard", last_name: "La Villageoise", password: "abcdefg")
 
