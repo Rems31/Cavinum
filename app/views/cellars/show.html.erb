@@ -9,15 +9,21 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <input type="text" placeholder="Appellation, nom, cépage..">
-    <button type="submit">Rechercher</button>
+    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Appellation, nom.."
+        %>
+      <%= submit_tag "Rechercher", name: "", class: "btn btn-primary" %>
+    <% end %>
   </div>
 
   <div class="container mt-4">
     <h3>Vitrine</h3>
-    <div class="overflow-auto vitrine-carousel">
-      <div class="d-flex gap-3">
-        <% Bottle.order(created_at: :desc).limit(5).each do |bottle| %>
+    <div class="carousel-home">
+      <div class="d-flex gap-3 carousel-element vitrine-carousel">
+        <% @bottles.order(created_at: :desc).limit(5).each do |bottle| %>
           <%= link_to bottle_path(bottle), class: "text-decoration-none" do %>
             <div class="card flex-shrink-0" style="width: 18rem;">
               <% if bottle.photo.attached? %>
@@ -25,7 +31,7 @@
               <% end %>
               <div class="card-body text-center">
                 <h5 class="card-title"><strong><%= bottle.name %></strong></h5>
-                <p class="card-text"><%= bottle.appellation %> <br> <%= bottle.variety %></p>
+                <p class="card-text"><%= bottle.appellation %></p>
               </div>
             </div>
           <% end %>
@@ -39,11 +45,10 @@
     <% current_user.cellar.slots.each do |slot| %>
       <% if slot.bottle.present? %>
         <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
-          <div class="d-flex border border-2 p-3">
-
+          <div class="border border-2 p-3">
             <div class="d-flex">
               <p class="p-2 text-muted"><strong><%= slot.bottle.name %></strong></p>
-              <p class="p-2 text-muted"><%= slot.bottle.appellation %> - <%= slot.bottle.variety %></p>
+              <p class="p-2 text-muted"><%= slot.bottle.appellation %></p>
               <p class="p-2 text-muted"><%= slot.name %></p>
             </div>
           </div>

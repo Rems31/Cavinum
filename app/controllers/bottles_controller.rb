@@ -2,6 +2,8 @@ class BottlesController < ApplicationController
   before_action :set_bottle, only: %i[update destroy edit show]
   def index
     @bottles = Bottle.all
+    sql_subquery = "name ILIKE :query OR appellation ILIKE :query OR variety ILIKE :query"
+    @bottles = @bottles.where(sql_subquery, query: "%#{params[:query]}%") if params[:query].present?
   end
 
   def show; end
