@@ -1,23 +1,23 @@
 <div class="background">
   <div class="d-flex m-4 justify-content-between">
     <%= link_to root_path do %>
-      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i>
+      <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
     <%= link_to root_path do %>
-      <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;"></i>
+      <i class="material-icons material-symbols-sharp">close</i>
     <% end %>
   </div>
 
   <div class= "mt-4">
     <%= simple_form_for(@bottle) do |f| %>
-      <%= f.input :photo, placeholder: "Ajouter une photo" %>
-      <%= f.input :name, placeholder: "Nom" %>
-      <%= f.input :appellation, placeholder: "Appellation" %>
-      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
-      <%= f.input :vintage, placeholder: "Millésime" %>
-      <%= f.input :area, placeholder: "Région" %>
-      <%= f.input :variety, placeholder: "Cépage" %>
-      <%= f.input :notes, placeholder: "Notes" %>
+      <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background"} %>
+      <%= f.input :name, placeholder: "Nom", input_html: {class: "background"} %>
+      <%= f.input :appellation, placeholder: "Appellation", input_html: {class: "background"} %>
+      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type", input_html: {class: "background"} %>
+      <%= f.input :vintage, placeholder: "Millésime", input_html: {class: "background"} %>
+      <%= f.input :area, placeholder: "Région", input_html: {class: "background"} %>
+      <%= f.input :variety, placeholder: "Cépage", input_html: {class: "background"} %>
+      <%= f.input :notes, placeholder: "Notes", input_html: {class: "background"} %>
 
 
     <div data-controller= "wine-cellar-slot">
