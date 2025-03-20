@@ -18,6 +18,31 @@
       <%= f.input :variety, placeholder: "Quel cépage" %>
       <%= f.input :notes, placeholder: "Ajouter une description" %>
       <%= f.button :submit, "Modifier la bouteille", class:"black-button" %>
+
+    <div data-controller= "wine-cellar-slot">
+      <button class="btn btn-secondary btn-lg"
+       data-action="click->wine-cellar-slot#open">
+      Choisir l'emplacement de la bouteille
+      </button>
+
+  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
+    <div class="cellar-grid">
+      <div class="mb-3">
+        <%= f.label :slot_id, "Emplacements disponibles" %>
+        <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
+          <div class="form-check">
+            <%= s.radio_button(class: "form-check-input") %>
+            <%= s.label(class: "form-check-label") %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.button :submit, "Valider l'emplacement" %>
+      <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
+  </div>
+
+  </div>
+
     <% end %>
   </div>
 </div>
