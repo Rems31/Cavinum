@@ -1,4 +1,12 @@
 <div class="background">
+  <div class="d-flex m-4 justify-content-between">
+   <%= link_to root_path do %>
+      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i> 
+    <% end %>
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;"></i>
+      <% end %>
+    </div>
   <div class= "mt-4">
 <%= simple_form_for(@bottle) do |f| %>
   <%= f.input :photo, placeholder: "Ajouter une photo" %>
@@ -9,6 +17,17 @@
   <%= f.input :area, placeholder: "Région" %>
   <%= f.input :variety, placeholder: "Cépage" %>
   <%= f.input :notes, placeholder: "Notes" %>
+
+   <div class="mb-3">
+        <%= f.label :slot_id, "Emplacement disponible" %>
+        <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
+          <div class="form-check">
+            <%= s.radio_button(class: "form-check-input") %>
+            <%= s.label(class: "form-check-label") %>
+          </div>
+        <% end %>
+      </div>
+
 
  <div data-controller= "wine-cellar-slot">
   <button class="btn btn-secondary btn-lg"
@@ -24,9 +43,9 @@
   </div>
 
   </div>
-
+    <%= f.button :submit, "Créer la bouteille", class: "black-button" %>
 
 <% end %>
 </div>
-<%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
+</div>
 </div>

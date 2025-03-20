@@ -4,7 +4,26 @@
   margin-right: auto;
   overflow: scroll;
   scrollbar-width: none;
-  padding: 10px;
-  scroll-snap-type: x mandatory;
-  scroll-snap-stop: normal;
+}
+
+.carousel-cave {
+  height: 300px;
+  overflow: scroll;
+  margin-left: auto;
+  margin-right: auto;
+  scrollbar-width: none;
+}
+
+.background {
+  background-color: #F8E7CF;
+}
+
+.background-darker {
+  background-color: #F1DEC2;
+  border: none;
+}
+
+.body {
+  height: 100vh;
+  background-color: #F8E7CF;
 }

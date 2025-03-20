@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one :cellar, dependent: :destroy
   has_many :slots, through: :cellar
   has_many :bottles, through: :slots
+  has_one_attached :photo
 end

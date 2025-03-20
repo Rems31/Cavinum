@@ -5,4 +5,5 @@ class Bottle < ApplicationRecord
   validates :name, presence: true
   validates :kind, presence: true, inclusion: { in: ["Blanc", "Rouge", "Rosé"] }
   validates :slot, presence: true
+  validates :slot_id, uniqueness: true
 end
