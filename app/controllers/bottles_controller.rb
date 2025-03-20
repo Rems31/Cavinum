@@ -23,7 +23,9 @@ class BottlesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
+  end
 
   def update
     if @bottle.update(bottle_params)

@@ -1,12 +1,13 @@
 <div class="background">
   <div class="d-flex m-4 justify-content-between">
-   <%= link_to root_path do %>
+    <%= link_to root_path do %>
       <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
     <%= link_to root_path do %>
       <i class="material-icons material-symbols-sharp">close</i>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
+
   <div class= "mt-4">
     <%= simple_form_for(@bottle) do |f| %>
       <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background"} %>
@@ -18,8 +19,17 @@
       <%= f.input :variety, placeholder: "Cépage", input_html: {class: "background"} %>
       <%= f.input :notes, placeholder: "Notes", input_html: {class: "background"} %>
 
-   <div class="mb-3">
-        <%= f.label :slot_id, "Emplacement disponible" %>
+
+    <div data-controller= "wine-cellar-slot">
+      <button class="btn btn-secondary btn-lg"
+       data-action="click->wine-cellar-slot#open">
+      Choisir l'emplacement de la bouteille
+      </button>
+
+  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
+    <div class="cellar-grid">
+      <div class="mb-3">
+        <%= f.label :slot_id, "Emplacements disponibles" %>
         <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
           <div class="form-check">
             <%= s.radio_button(class: "form-check-input") %>
@@ -28,24 +38,14 @@
         <% end %>
       </div>
 
-
- <div data-controller= "wine-cellar-slot">
-  <button class="btn btn-secondary btn-lg"
-  data-action="click->wine-cellar-slot#open">
-      Choisir l'emplacement de la bouteille
-    </button>
-
-  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
-    <div class="cellar-grid">
-  <%= f.association :slot, as: :radio_buttons %>
-  <%= f.button :submit, "Valider" %>
-  <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
+      <%= f.button :submit, "Valider l'emplacement" %>
+      <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
   </div>
 
   </div>
-    <%= f.button :submit, "Créer la bouteille", class: "black-button" %>
 
-<% end %>
+
+  <% end %>
 </div>
 </div>
 </div>
