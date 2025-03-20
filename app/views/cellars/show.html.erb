@@ -3,12 +3,15 @@
     <%= link_to profile_path do %>
       <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 50, height: 50, style: "object-fit: cover" %>
     <% end %>
-    <%=  link_to new_bottle_path do %>
-      <i class="fa-solid fa-plus fa-2xl" style="color: #000000;"></i> <!-- Icône Bootstrap -->
-    <% end %>
+    <div>
+      <i class="fa-solid fa-braille fa-rotate-270 fa-xl" style="color: #000000;"></i>
+      <%=  link_to new_bottle_path do %>
+        <i class="fa-solid fa-plus fa-2xl" style="color: #000000;"></i> <!-- Icône Bootstrap -->
+      <% end %>
+    </div>
   </div>
 
-  <div class="mt-4 d-flex justify-content-center">
+  <div class="d-flex justify-content-center p-4">
     <h1>Bonjour <%= current_user.first_name %> </h1>
   </div>
 
@@ -51,7 +54,7 @@
         <% current_user.cellar.slots.each do |slot| %>
           <% if slot.bottle.present? %>
             <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
-              <div class="card p-3 m-1 background-darker" style="width: 22rem; height: 80px;">
+              <div class="card p-3 m-1 background-darker" style="width: 355px; height: 80px; border-radius: 10px 50px 50px 10px;">
                 <div class="position-relative">
                   <p class="position-absolute"><strong><%= slot.bottle.name %></strong><br><%= slot.bottle.appellation %></p>
                   <p class="position-absolute" style="top: 10px; right: 0;"><%= slot.name %></p>

@@ -1,7 +1,12 @@
-<div>
-   <%= link_to root_path, class: "btn btn-primary m-4" do %>
-      <i class="fa-solid fa-left-long"></i> <!-- Icône Bootstrap -->
+<div class="p-4">
+  <div class="d-flex m-4 justify-content-between">
+   <%= link_to root_path do %>
+      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i> <!-- Icône Bootstrap -->
     <% end %>
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;"></i>
+      <% end %>
+    </div>
   <div class="mt-4">
     <%= simple_form_for(@bottle) do |f| %>
       <%= f.input :name, placeholder: "Nom" %>
@@ -24,9 +29,7 @@
       </div>
 
       <%= f.input :photo, placeholder: "Ajouter une photo" %>
-      <%= f.button :submit, "Créer la bouteille", class: "btn btn-primary" %>
+      <%= f.button :submit, "Créer la bouteille", class: "black-button" %>
     <% end %>
   </div>
-
-  <%= link_to "Annuler", root_path, class: "btn btn-secondary" %>
 </div>
