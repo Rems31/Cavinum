@@ -1,11 +1,74 @@
 .slot-selector {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: 2;
-display: flex;
-justify-content: center;
-align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.slot-selector .mb-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.slot-selector .form-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+}
+
+.slot-selector .cellar-grid {
+  width: 90%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.slot-selector label:first-child {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.slot-selector .form-check-input {
+  position: absolute;
+  opacity: 0;
+}
+
+.slot-selector .form-check-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.slot-selector .form-check-input:checked + .form-check-label {
+  background-color: #8B2131;
+  color: white;
+}
+
+.slot-selector .form-check-label.occupied {
+  background-color: #474445;
+  color: white;
+  cursor: not-allowed;
 }

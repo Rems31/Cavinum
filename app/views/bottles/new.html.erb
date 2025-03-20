@@ -1,25 +1,35 @@
 <div class="background">
   <div class="d-flex m-4 justify-content-between">
-   <%= link_to root_path do %>
-      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i> 
+    <%= link_to root_path do %>
+      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i>
     <% end %>
     <%= link_to root_path do %>
       <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;"></i>
-      <% end %>
-    </div>
-  <div class= "mt-4">
-<%= simple_form_for(@bottle) do |f| %>
-  <%= f.input :photo, placeholder: "Ajouter une photo" %>
-  <%= f.input :name, placeholder: "Nom" %>
-  <%= f.input :appellation, placeholder: "Appellation" %>
-  <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
-  <%= f.input :vintage, placeholder: "Millésime" %>
-  <%= f.input :area, placeholder: "Région" %>
-  <%= f.input :variety, placeholder: "Cépage" %>
-  <%= f.input :notes, placeholder: "Notes" %>
+    <% end %>
+  </div>
 
-   <div class="mb-3">
-        <%= f.label :slot_id, "Emplacement disponible" %>
+  <div class= "mt-4">
+    <%= simple_form_for(@bottle) do |f| %>
+      <%= f.input :photo, placeholder: "Ajouter une photo" %>
+      <%= f.input :name, placeholder: "Nom" %>
+      <%= f.input :appellation, placeholder: "Appellation" %>
+      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
+      <%= f.input :vintage, placeholder: "Millésime" %>
+      <%= f.input :area, placeholder: "Région" %>
+      <%= f.input :variety, placeholder: "Cépage" %>
+      <%= f.input :notes, placeholder: "Notes" %>
+
+
+    <div data-controller= "wine-cellar-slot">
+      <button class="btn btn-secondary btn-lg"
+       data-action="click->wine-cellar-slot#open">
+      Choisir l'emplacement de la bouteille
+      </button>
+
+  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
+    <div class="cellar-grid">
+      <div class="mb-3">
+        <%= f.label :slot_id, "Emplacements disponibles" %>
         <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
           <div class="form-check">
             <%= s.radio_button(class: "form-check-input") %>
@@ -28,24 +38,14 @@
         <% end %>
       </div>
 
-
- <div data-controller= "wine-cellar-slot">
-  <button class="btn btn-secondary btn-lg"
-  data-action="click->wine-cellar-slot#open">
-      Choisir l'emplacement de la bouteille
-    </button>
-
-  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
-    <div class="cellar-grid">
-  <%= f.association :slot, as: :radio_buttons %>
-  <%= f.button :submit, "Valider" %>
-  <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
+      <%= f.button :submit, "Valider l'emplacement" %>
+      <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
   </div>
 
   </div>
-    <%= f.button :submit, "Créer la bouteille", class: "black-button" %>
 
-<% end %>
+
+  <% end %>
 </div>
 </div>
 </div>
