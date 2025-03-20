@@ -15,6 +15,7 @@ class BottlesController < ApplicationController
 
   def create
     @bottle = Bottle.new(bottle_params)
+    @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
     if @bottle.save
       redirect_to root_path, notice: "Bouteille créee avec succès."
     else

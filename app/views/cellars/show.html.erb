@@ -4,9 +4,9 @@
       <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 50, height: 50, style: "object-fit: cover" %>
     <% end %>
     <div>
-      <i class="fa-solid fa-braille fa-rotate-270 fa-xl" style="color: #000000;"></i>
+        <i class="material-icons material-symbols-sharp">apps</i>
       <%=  link_to new_bottle_path do %>
-        <i class="fa-solid fa-plus fa-2xl" style="color: #000000;"></i> <!-- Icône Bootstrap -->
+        <i class="material-icons material-symbols-sharp">add</i>
       <% end %>
     </div>
   </div>
@@ -26,15 +26,15 @@
     <% end %>
   </div>
 
-  <div class="container mt-4 p-4">
-    <h3>Vitrine</h3>
+  <div class="container mt-4">
+    <h3 class="ms-1">Vitrine</h3>
     <div class="carousel-home">
       <div class="d-flex gap-3">
         <% @bottles.order(created_at: :desc).limit(5).each do |bottle| %>
           <%= link_to bottle_path(bottle), class: "text-decoration-none" do %>
-            <div class="card flex-shrink-0 background-darker" style="width: 18rem;">
+            <div class="card background-darker p-2" style="width: 180px; height: 300px; border-radius: 10px;">
               <% if bottle.photo.attached? %>
-                <%= cl_image_tag(bottle.photo.key, width: 300, height: 200, crop: :fill, class: "card-img-top") %>
+                <%= cl_image_tag(bottle.photo.key, width: 145, height: 160, crop: :fill, class: "card-img-top") %>
               <% end %>
               <div class="card-body text-center">
                 <h5 class="card-title"><strong><%= bottle.name %></strong></h5>
@@ -47,8 +47,8 @@
     </div>
   </div>
 
-  <div class="m-4">
-    <h3>Ma cave</h3>
+  <div class="ms-3">
+    <h3 class="ms-1">Ma cave</h3>
     <div class="carousel-cave">
       <div class="d-flex flex-column">
         <% current_user.cellar.slots.each do |slot| %>

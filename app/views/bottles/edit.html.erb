@@ -1,23 +1,23 @@
 <div class="background body">
   <div class="m-4 d-flex justify-content-between">
     <%= link_to bottle_path(@bottle) do %>
-      <i class="fa-solid fa-left-long fa-2xl" style="color: #000000;"></i>
+      <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
     <%= link_to root_path do %>
-      <i class="fa-solid fa-xmark fa-2xl" style="color: #000000;"></i>
+      <i class="material-icons material-symbols-sharp">close</i>
       <% end %>
   </div>
   <div class= "mt-4">
     <%= simple_form_for(@bottle) do |f| %>
-      <%= f.input :photo, placeholder: "Ajouter une photo" %>
-      <%= f.input :name, placeholder: "Nom" %>
-      <%= f.input :appellation, placeholder: "Appellation" %>
-      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type" %>
-      <%= f.input :vintage, placeholder: "Quelle année" %>
-      <%= f.input :area, placeholder: "Quelle région" %>
-      <%= f.input :variety, placeholder: "Quel cépage" %>
-      <%= f.input :notes, placeholder: "Ajouter une description" %>
-      <%= f.button :submit, "Modifier la bouteille", class:"black-button" %>
+      <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background"} %>
+      <%= f.input :name, placeholder: "Nom", input_html: {class: "background"} %>
+      <%= f.input :appellation, placeholder: "Appellation", input_html: {class: "background"} %>
+      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type", input_html: {class: "background"} %>
+      <%= f.input :vintage, placeholder: "Quelle année", input_html: {class: "background"} %>
+      <%= f.input :area, placeholder: "Quelle région", input_html: {class: "background"} %>
+      <%= f.input :variety, placeholder: "Quel cépage", input_html: {class: "background"} %>
+      <%= f.input :notes, placeholder: "Ajouter une description", input_html: {class: "background"} %>
+      <%= f.button :submit, "Modifier la bouteille", class:"button button-black position-relative", style: "top: 65px; left: 22px;" %>
     <% end %>
   </div>
 </div>

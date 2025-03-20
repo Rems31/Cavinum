@@ -1,13 +1,28 @@
-.black-button {
-  background-color: black;
+.button {
+  display: inline-block;
+  width: 360px;
+  padding: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
   color: #F8E7CF;
+  border: none;
+  border-radius: 50px;
+  font: 600 20px Inter, sans-serif;
 }
 
-.red-button {
+.button-black {
+  background-color: Black;
+}
+
+.button-black:active {
+  background-color: #635C53;
+}
+
+.button-red {
   background-color: #81152C;
-  color: #F8E7CF;
-  width: 338px;
-  height: 54px;
-  padding: 10px;
-  border-radius: 30%;
+}
+
+.button-red:active {
+  background-color: #B0696D;
 }
