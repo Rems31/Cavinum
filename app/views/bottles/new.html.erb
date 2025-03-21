@@ -30,7 +30,7 @@
       <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
       <% end %>
       <div class="mb-3">
-        <%= f.label :slot_id, "Emplacements disponibles" %>
+        <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
         <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
           <div class="form-check">
             <%= s.radio_button(class: "form-check-input") %>

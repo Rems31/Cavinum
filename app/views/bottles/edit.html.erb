@@ -28,7 +28,7 @@
   <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
     <div class="cellar-grid">
       <div class="mb-3">
-        <%= f.label :slot_id, "Emplacements disponibles" %>
+        <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
         <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
           <div class="form-check">
             <%= s.radio_button(class: "form-check-input") %>
