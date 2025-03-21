@@ -4,7 +4,7 @@
       <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 50, height: 50, style: "object-fit: cover" %>
     <% end %>
     <div>
-        <i class="material-icons material-symbols-sharp">apps</i>
+      <i class="material-icons material-symbols-sharp">apps</i>
       <%=  link_to new_bottle_path do %>
         <i class="material-icons material-symbols-sharp">add</i>
       <% end %>
@@ -15,16 +15,17 @@
     <h1>Bonjour <%= current_user.first_name %> </h1>
   </div>
 
-  <div class="d-flex justify-content-center">
-    <%= form_with url: root_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control background",
-            placeholder: "Appellation, nom.."
-        %>
-      <%= submit_tag "Rechercher", name: "", class: "background" %>
-    <% end %>
+  <div class="d-flex justify-content-center search-border">
+    <%= form_with url: root_path, method: :get, class: "search-bar d-flex align-items-center" do %>
+    <div class="d-flex">
+      <%= text_field_tag :query, params[:query], class: "form-control search-input background border-0", placeholder: "Rechercher une bouteille" %>
+      <button type="submit" class="background border-0">
+        <i class="material-icons" style="font-size: 28px;">search</i>
+      </button>
+      <% end %>
+    </div>
   </div>
+
 
   <div class="container mt-4">
     <h3 class="ms-1">Vitrine</h3>
@@ -37,8 +38,8 @@
                 <%= cl_image_tag(bottle.photo.key, width: 145, height: 160, crop: :fill, class: "card-img-top") %>
               <% end %>
               <div class="card-body text-center">
-                <h5 class="card-title"><strong><%= bottle.name %></strong></h5>
-                <p class="card-text"><%= bottle.appellation %></p>
+                <h5><strong><%= bottle.name %></strong></h5>
+                <p><%= bottle.appellation %></p>
               </div>
             </div>
           <% end %>
@@ -48,7 +49,7 @@
   </div>
 
   <div class="ms-3">
-    <h3 class="ms-1">Ma cave</h3>
+    <h3 class="ms-1 pt-2">Ma cave</h3>
     <div class="carousel-cave">
       <div class="d-flex flex-column">
         <% current_user.cellar.slots.each do |slot| %>
@@ -57,7 +58,11 @@
               <div class="card p-3 m-1 background-darker" style="width: 355px; height: 80px; border-radius: 10px 50px 50px 10px;">
                 <div class="position-relative">
                   <p class="position-absolute"><strong><%= slot.bottle.name %></strong><br><%= slot.bottle.appellation %></p>
-                  <p class="position-absolute" style="top: 10px; right: 0;"><%= slot.name %></p>
+                  <p class="position-absolute" style="right: 0;">
+                    <span class="badge <%= color_class(slot.bottle.kind) %>">
+                      <%= slot.name %>
+                    </span>
+                  </p>
                 </div>
               </div>
             <% end %>
