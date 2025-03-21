@@ -6,7 +6,9 @@ class BottlesController < ApplicationController
     @bottles = @bottles.where(sql_subquery, query: "%#{params[:query]}%") if params[:query].present?
   end
 
-  def show; end
+  def show
+    @slot = @bottle.slot
+  end
 
   def new
     @bottle = Bottle.new
@@ -28,6 +30,7 @@ class BottlesController < ApplicationController
   end
 
   def update
+    @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
     if @bottle.update(bottle_params)
       redirect_to bottle_path(@bottle), notice: "Bouteille modifiée avec succès."
     else

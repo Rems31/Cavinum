@@ -1,0 +1,30 @@
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  padding: 6px 12px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-align: center;
+  color: #F1DEC2;
+}
+
+.badge-red {
+  background-color: #81152C; /* Rouge bordeaux */
+}
+
+.badge-yellow {
+  background-color: #CBAF52; /* Jaune doré */
+}
+
+.badge-pink {
+  background-color: #E18DA8; /* Rose */
+}
+
+.badge-default {
+  background-color: #808080; /* Gris par défaut */
+}

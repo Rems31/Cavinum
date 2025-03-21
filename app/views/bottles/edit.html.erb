@@ -17,7 +17,6 @@
       <%= f.input :area, placeholder: "Quelle région", input_html: {class: "background"} %>
       <%= f.input :variety, placeholder: "Quel cépage", input_html: {class: "background"} %>
       <%= f.input :notes, placeholder: "Ajouter une description", input_html: {class: "background"} %>
-      <%= f.button :submit, "Modifier la bouteille", class:"button button-black position-relative", style: "top: 65px; left: 22px;" %>
 
     <div data-controller= "wine-cellar-slot">
       <button class="btn btn-secondary btn-lg"
@@ -27,6 +26,9 @@
 
   <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
     <div class="cellar-grid">
+       <%= link_to edit_bottle_path(@bottle) do %>
+              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
+            <% end %>
       <div class="mb-3">
         <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
         <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
@@ -38,7 +40,6 @@
       </div>
 
       <%= f.button :submit, "Valider l'emplacement" %>
-      <button class="btn btn-secondary"><%= link_to "Annuler", new_bottle_path%></button>
   </div>
 
   </div>

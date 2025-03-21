@@ -8,14 +8,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div class="container-fluid all-pages background">
-      <div class="row">
-        <div class="col-12">
+    <div class="container-fluid all-pages background" style="height: 100vh;">
+      <div class="row background">
+        <div class="col-12 col-sm-6">
           <%= render "shared/flashes" %>
           <%= yield %>
         </div>
