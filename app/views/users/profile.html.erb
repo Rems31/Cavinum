@@ -1,26 +1,32 @@
-<div class="container text-center body justify-content-center" style="height: 100vh;">
-  <div class="d-flex pt-4">
+<div class="justify-content-center">
+  <div class="d-flex">
     <%= link_to root_path do %>
       <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
   </div>
-
-    <%= image_tag "default-avatar.jpg", class: "rounded-circle border border-3", width: 150, height: 150, style: "object-fit: cover" %>
-    <h1 class="pt-3"><%= @user.first_name %> <%= @user.last_name %></h1>
-  <div class="pt-4">
-    <p><strong>Nom : </strong><%= @user.first_name %> <%= @user.last_name %></p>
+  <div class="text-center">
+    <%= image_tag "default-avatar.jpg", class: "rounded-circle border-picture", width: 124, height: 124, style: "object-fit: cover" %>
+    <h1 class="padding-name"><%= @user.first_name %> <%= @user.last_name %></h1>
   </div>
-  <div>
-    <p><strong>Email :</strong> <%= @user.email %></p>
+  <div class="padding-">
+    <div>
+      <p><strong>Nom</strong><br><%= @user.first_name %> <%= @user.last_name %></p><hr>
+    </div>
+    <div>
+      <p><strong>Email</strong><br>g****d@gmail.com</p><hr>
+    </div>
+    <div>
+      <p><strong>Password</strong><br>*******</p><hr>
+    </div>
   </div>
-  <div>
-    <p><strong>Password :</strong> *******</p>
+  <div class="text-center" style="text-decoration: underline; font-weight: bold">
+    <p style="padding-top: 60px; font-weight: bold">Connexion et sécurité</p>
+    <p style="font-weight: bold">Mentions légales</p>
+    <p style="font-weight: bold">Conditions Générales d'Utilisation</p>
   </div>
-  <div class="">
    <% if user_signed_in? %>
-      <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "button button-red position-relative", style: "top: 415px; right: 0;" %>
+      <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "button button-red position-relative", style: "top: 100px;" %>
     <% else %>
       <%= link_to "Log In", new_user_session_path %>
     <% end %>
-  </div>
 </div>
