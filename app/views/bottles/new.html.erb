@@ -1,11 +1,11 @@
 <div class="background">
-  <div class="d-flex m-4 justify-content-between">
+  <div class="d-flex justify-content-between">
     <%= link_to root_path do %>
       <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
   </div>
 
-  <div class= "mt-4">
+  <div>
       <%= simple_form_for(@bottle) do |f| %>
         <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input"} %>
         <%= f.input :name, placeholder: "Nom", input_html: {class: "background input"} %>
@@ -14,35 +14,37 @@
         <%= f.input :vintage, placeholder: "Millésime", input_html: {class: "background input"} %>
         <%= f.input :area, placeholder: "Région", input_html: {class: "background input"} %>
         <%= f.input :variety, placeholder: "Cépage", input_html: {class: "background input"} %>
-        <%= f.input :notes, placeholder: "Notes", input_html: {class: "background input"} %><hr>
+        <%= f.input :notes, placeholder: "Notes", input_html: {class: "background input"} %>
 
 
       <div data-controller= "wine-cellar-slot">
-          <button class="button button-black"
+        <div class="d-flex justify-content-between position-relative" style= "top: 33px;">
+          <button class="small-button small-button-black"
           data-action="click->wine-cellar-slot#open">
-          Choisir l'emplacement
+          Emplacement
           </button>
+          <%= f.submit "Ajouter", class: "small-button button-black" if @bottle.slot.present? %>
+        </div>
         <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
-          <div class="cellar-grid">
+          <div class="cellar-grid-new">
 
             <%= link_to new_bottle_path do %>
-              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-50px); top: 100px;">close</i>
+              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-50px); top: 50px;">close</i>
             <% end %>
             <div class="mb-3">
-              <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
+              <%= f.label :slot_id, "Choisissez un emplacement", class: "label-slot-id" %>
               <%= f.collection_radio_buttons :slot_id, @all_slots, :id, :name do |s| %>
                 <div class="form-check">
                   <%= s.radio_button(class: "form-check-input", disabled: s.object.bottle.present?) %>
-                  <%= s.label(class: "form-check-label") %>
+                  <%= s.label(class: "form-check-label empty-slot-new") %>
                 </div>
               <% end %>
             </div>
 
-            <%= f.button :submit, "Valider l'emplacement" %>
+            <%= f.button :submit, "Valider l'emplacement", class: "button button-black", style: "margin-top: 150px" %>
 
           </div>
         </div>
-      <%= f.submit "Créer la bouteille", class: "button button-black" if @bottle.slot.present? %>
       <% end  %>
       </div>
   </div>

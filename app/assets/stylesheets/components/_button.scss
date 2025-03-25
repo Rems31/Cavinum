@@ -53,3 +53,25 @@
   color: #F8E7CF;
   border: none;
 }
+
+.small-button {
+  width: 49%;
+  font: 600 20px Inter, sans-serif;
+  color: #F8E7CF;
+  border-radius: 50px;
+  text-align: center;
+  padding: 15px;
+
+}
+
+.small-button-black {
+  color: black;
+  border: 1px solid black;
+  background-color: #F8E7CF;
+}
+
+.small-button-black:active {
+  background-color: black;
+  border: none;
+  color: #F8E7CF;
+}

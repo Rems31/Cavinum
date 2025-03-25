@@ -45,6 +45,7 @@ color: #B9A88F;
   justify-content: center;
   align-items: center;
   margin: 3px;
+  padding: 0;
 }
 
 .slot-selector .cellar-grid {
@@ -99,8 +100,20 @@ grid-column: 1 / -1;
   color: #F8E7CF;
 }
 
-.slot-selector .form-check-label.occupied {
-  background-color: #474445;
-  color: white;
-  cursor: not-allowed;
+.cellar-grid-new {
+  width: 350px;
+  height: 439px;
 }
+
+.empty-slot-new {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font: 600 20px Inter, sans-serif;
+  border-radius: 50px;
+  text-align: center;
+  color: #B9A88F;
+  }
