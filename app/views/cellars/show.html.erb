@@ -6,7 +6,7 @@
   <div class="d-flex align-items-center">
 
     <div data-controller= "cellar-show-button">
-      <button data-action="click->cellar-show-button#open", class="border-0 background">
+      <button data-action="click->cellar-show-button#open", class="border-0 background d-flex">
         <i class="material-icons material-symbols-sharp">apps</i>
       </button>
 
@@ -94,14 +94,34 @@
     </div>
   </div>
 
-  <div>
+  <div data-controller="filter">
     <h3 class="padding-ma-cave">Ma cave</h3>
+
+    <!-- Boutons de filtrage -->
+    <div class="sort-button-div">
+      <button class="sort-button" data-action="click->filter#filter" data-filter="all">
+        Tout (<%= current_user.cellar.bottles.count %>)
+      </button>
+      <button class="sort-button" data-action="click->filter#filter" data-filter="Rouge">
+        Rouge (<%= current_user.cellar.bottles.where(kind: 'Rouge').count %>)
+      </button>
+      <button class="sort-button" data-action="click->filter#filter" data-filter="Blanc">
+        Blanc (<%= current_user.cellar.bottles.where(kind: 'Blanc').count %>)
+      </button>
+      <button class="sort-button" data-action="click->filter#filter" data-filter="Rosé">
+        Rosé (<%= current_user.cellar.bottles.where(kind: 'Rosé').count %>)
+      </button>
+    </div>
+
+
     <div class="carousel-cave">
       <div class="d-flex flex-column gap-ma-cave">
         <% current_user.cellar.slots.each do |slot| %>
           <% if slot.bottle.present? %>
             <%= link_to bottle_path(slot.bottle), class: "text-decoration-none" do %>
-              <div class="background-darker card-ma-cave card-description">
+              <div class="background-darker card-ma-cave card-description mb-2"
+                  data-filter-target="bottle"
+                  data-kind="<%= slot.bottle.kind %>">
                 <div class="position-relative">
                   <div class="position-absolute"><strong><%= slot.bottle.name %></strong><br><%= slot.bottle.appellation %></div>
                   <div class="position-absolute" style="right: 1px; top: -8px;">
@@ -117,4 +137,5 @@
       </div>
     </div>
   </div>
+
 </div>
