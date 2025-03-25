@@ -14,7 +14,7 @@
 
 .slot-selector .mb-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   width: 90%;
   max-width: 450px;
@@ -64,8 +64,8 @@
 }
 
 .slot-selector .form-check-input:checked + .form-check-label {
-  background-color: #8B2131;
-  color: white;
+  background-color: black;
+  color: #F8E7CF;
 }
 
 .slot-selector .form-check-label.occupied {
