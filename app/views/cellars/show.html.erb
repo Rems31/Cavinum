@@ -5,47 +5,47 @@
     <% end %>
   <div class="d-flex align-items-center">
 
-  <div data-controller= "cellar-show-button">
-    <button data-action="click->cellar-show-button#open">
-      <i class="material-icons material-symbols-sharp">apps</i>
-    </button>
+    <div data-controller= "cellar-show-button">
+      <button data-action="click->cellar-show-button#open", class="border-0 background">
+        <i class="material-icons material-symbols-sharp">apps</i>
+      </button>
 
-    <div class="d-none slot-selector" data-cellar-show-button-target="cellarShow">
-      <div class="cellar-grid">
+      <div class="d-none slot-selector" data-cellar-show-button-target="cellarShow">
+        <div class="cellar-grid">
 
-        <%= link_to root_path do %>
-          <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
-        <% end %>
-
-        <div class="mb-3">
-          <div>
-           <h3 class="label-slot-id"> Ma cave </h3>
-              <p><%= "#{@bottles.size} bouteilles | #{@cellar.slots.size} cellules" %></p>
-          </div>
-
-          <% @all_slots.each do |slot| %>
-            <% if slot.bottle.present? %>
-              <%= link_to bottle_path(slot.bottle) do %>
-                <span class="badge <%= color_class(slot.bottle.kind) %>">
-                  <%= slot.name %>
-                </span>
-                <% end %>
-              <% else %>
-                <div class="form-check">
-                  <%= link_to slot.name, new_bottle_path(slot: slot) %>
-                  </div>
-              <% end %>
+          <%= link_to root_path do %>
+            <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
           <% end %>
-        </div>
+
+          <div class="mb-3">
+            <div>
+            <h3 class="label-slot-id"> Ma cave </h3>
+                <p><%= "#{@bottles.size} bouteilles | #{@cellar.slots.size} cellules" %></p>
+            </div>
+
+            <% @all_slots.each do |slot| %>
+              <% if slot.bottle.present? %>
+                <%= link_to bottle_path(slot.bottle) do %>
+                  <span class="badge <%= color_class(slot.bottle.kind) %>">
+                    <%= slot.name %>
+                  </span>
+                <% end %>
+                <% else %>
+                  <div class="form-check">
+                    <%= link_to slot.name, new_bottle_path(slot: slot) %>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
 
         </div>
       </div>
     </div>
-    </div>
-    <%= link_to new_bottle_path, class: "affichage-block" do %>
 
+    <%= link_to new_bottle_path, class: "affichage-block" do %>
       <i class="material-icons material-symbols-sharp">add</i>
     <% end %>
+    </div>
   </div>
 </div>
 
