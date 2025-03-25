@@ -18,29 +18,31 @@
 
 
       <div data-controller= "wine-cellar-slot">
-          <button class="btn btn-secondary btn-lg"
+          <button class="button button-black"
           data-action="click->wine-cellar-slot#open">
-          Choisir l'emplacement de la bouteille
+          Choisir l'emplacement
           </button>
         <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
           <div class="cellar-grid">
 
             <%= link_to new_bottle_path do %>
-              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
+              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-50px); top: 100px;">close</i>
             <% end %>
             <div class="mb-3">
               <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
-              <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
+              <%= f.collection_radio_buttons :slot_id, @all_slots, :id, :name do |s| %>
                 <div class="form-check">
-                  <%= s.radio_button(class: "form-check-input") %>
+                  <%= s.radio_button(class: "form-check-input", disabled: s.object.bottle.present?) %>
                   <%= s.label(class: "form-check-label") %>
                 </div>
               <% end %>
             </div>
 
             <%= f.button :submit, "Valider l'emplacement" %>
+
           </div>
         </div>
+      <%= f.submit "Créer la bouteille", class: "button button-black" if @bottle.slot.present? %>
       <% end  %>
       </div>
   </div>
