@@ -92,3 +92,30 @@
 .gap-ma-cave {
   gap: 10px;
 }
+
+.picture-bottle {
+  height: 370px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  margin-top: 52px;
+}
+
+.text-bottle {
+  text-align: center;
+  background-color: #F1DEC2;
+  border-radius: 0 0 10px 10px;
+  padding-bottom: 1px;
+}
+
+.description-bottle {
+  border-top: 1px solid black;
+  margin: 0 24px 24px 24px;
+  text-align: start;
+  padding-top: 10px;
+  font-style: italic;
+}
+
+.paragraphe-margin {
+  margin-bottom: 25px;
+}

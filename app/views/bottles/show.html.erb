@@ -1,5 +1,5 @@
-<div class="container body">
-  <div class="m-4 d-flex justify-content-between">
+<div class="background">
+  <div class="d-flex justify-content-between align-item-center">
     <%= link_to root_path do %>
       <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
@@ -7,28 +7,26 @@
       <i class="material-icons material-symbols-sharp">edit</i>
       <% end %>
   </div>
-    <div class="card background-darker mx-auto p-3 text-center ">
-      <%= cl_image_tag(@bottle.photo.key, class: "p-2",style: "height: 248px; width: 248px; object-fit: cover; border-radius: 20px; margin: auto") if @bottle.photo.attached? %>
+    <div>
+      <%= cl_image_tag(@bottle.photo.key, class:"picture-bottle") if @bottle.photo.attached? %>
+      <div class="text-bottle position-relative">
+        <div class="paragraph-div"><%= @bottle.appellation%></div>
+          <h3><%= @bottle.name %></h3>
+          <p class="paragraphe-margin"><%= @bottle.area %> | <%= @bottle.variety %> | <%= @bottle.vintage %></p>
 
-      <h4><b><%= @bottle.name %></b></h4>
-      <p><%= @bottle.appellation%></p>
-      <p><%= @bottle.kind %></p>
-      <p><%= @bottle.vintage %></p>
-      <p><%= @bottle.area %></p>
-      <p><%= @bottle.variety %></p>
-      <p><%= @bottle.notes %></p>
-
-       <% if @bottle.slot.present? %>
-        <p>
-          <span class="badge <%= color_class(@bottle.kind) %>">
-            <%= @bottle.slot.name %>
-          </span>
-        </p>
+        <div class="description-bottle">
+          <p><%= @bottle.notes %></p>
+        </div>
+        <% if @bottle.slot.present? %>
+            <span class="badge position-absolute border-pastille <%= color_class(@bottle.kind) %>", style="top: -25px; left: 162px">
+              <%= @bottle.slot.name %>
+            </span>
         <% else %>
           <p>Pas d'emplacement attribué</p>
         <% end %>
+      </div>
     </div>
-    <div class= "m-4">
-      <%= link_to "Supprimer la bouteille", bottle_path(@bottle), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" }, class: "button button-red position-relative", style: "top: 80px; right: 30px;" %>
+    <div>
+      <%= link_to "Supprimer la bouteille", bottle_path(@bottle), data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûr?" }, class: "button button-red position-relative", style: "top: 70px;" %>
     </div>
 </div>

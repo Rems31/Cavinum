@@ -43,16 +43,16 @@ bottles_data = [
     vintage: 2020,
     area: "Sud-Ouest",
     variety: "Gros manseng",
-    notes: "Raffiné avec des notes de brioche et de zeste d'agrumes.",
+    notes: "Réalisé avec du gros Manseng, un cépage connu pour sa gourmandise.",
     image_url: "https://res.cloudinary.com/dsidliem1/image/upload/v1742291798/Cavinum/kzwmhvmlsilnx0sxvp0s.jpg"
   },
   {
-    name: "Chateaux Mondotte Bellisle",
-    appellation: "Saint-Emilion Grand Cru",
+    name: "Chateaux Mondotte",
+    appellation: "Saint-Emilion GC",
     kind: "Rouge",
     vintage: 1993,
     area: "Bordeaux",
-    variety: "Cabernet Sauvignon, cabernet franc",
+    variety: "Cabernet Sauvignon",
     notes: "Élégant, avec des tons terreux et une finition veloutée.",
     image_url: "https://res.cloudinary.com/dsidliem1/image/upload/v1742291798/Cavinum/ee0dshe1w0mcyasfxw5y.jpg"
   },
@@ -67,19 +67,19 @@ bottles_data = [
     image_url: "https://res.cloudinary.com/dsidliem1/image/upload/v1742291798/Cavinum/upexmfgxvnwznyzptrws.jpg"
   },
   {
-    name: "Le Mas Saint-Hugues",
+    name: "Mas Saint-Hugues",
     appellation: "Côtes du Rhone",
     kind: "Rouge",
     vintage: 2019,
     area: "Côtes du Rhone",
-    variety: "Syrah, Grenache",
+    variety: "Grenache",
     notes: "Notes boisées, d'épices, de vanille et de café.",
     image_url: "https://res.cloudinary.com/dsidliem1/image/upload/v1742291798/Cavinum/dpz8aldx6uo3t89iaekx.jpg"
   },
   {
-    name: "La Poule aux oeufs d'or",
+    name: "Poule aux oeufs d'or",
     appellation: "Vins de France",
-    kind: "Blanc doux",
+    kind: "Blanc",
     vintage: 2018,
     area: "Sud-ouest",
     variety: "Petit et gros manseng",
