@@ -10,18 +10,16 @@
       <i class="material-icons material-symbols-sharp">apps</i>
     </button>
 
-    <div class="d-none slot-selector" data-cellar-show-button-target="cellarShow">
+    <div class="d-none slot-selector background-modal" data-cellar-show-button-target="cellarShow">
       <div class="cellar-grid">
 
         <%= link_to root_path do %>
-          <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
+          <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-50px); top: 100px;">close</i>
         <% end %>
 
         <div class="mb-3">
-          <div>
-           <h3 class="label-slot-id"> Ma cave </h3>
-              <p><%= "#{@bottles.size} bouteilles | #{@cellar.slots.size} cellules" %></p>
-          </div>
+           <h1 class="label-slot-id"> Ma cave </h1>
+            <p class="cellar-text"><%= "#{@bottles.size} bouteilles | #{@cellar.slots.size} cellules" %></p>
 
           <% @all_slots.each do |slot| %>
             <% if slot.bottle.present? %>
@@ -31,8 +29,8 @@
                 </span>
                 <% end %>
               <% else %>
-                <div class="form-check">
-                  <%= link_to slot.name, new_bottle_path(slot: slot) %>
+                <div class="form-check-label">
+                  <%= link_to slot.name, new_bottle_path(slot: slot), class: "empty-slot"%>
                   </div>
               <% end %>
           <% end %>

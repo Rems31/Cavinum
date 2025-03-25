@@ -14,6 +14,7 @@ class BottlesController < ApplicationController
     @bottle = Bottle.new
     @bottle.slot = Slot.find(params[:slot].to_i) if params[:slot].present?
     @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
+    @all_slots = current_user.cellar.slots
   end
 
   def create
