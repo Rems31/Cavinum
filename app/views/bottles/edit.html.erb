@@ -1,5 +1,5 @@
-<div class="background body">
-  <div class="m-4 d-flex justify-content-between">
+<div class="background">
+  <div class="d-flex justify-content-between">
     <%= link_to bottle_path(@bottle) do %>
       <i class="material-icons material-symbols-sharp">west</i>
     <% end %>
@@ -7,43 +7,45 @@
       <i class="material-icons material-symbols-sharp">close</i>
       <% end %>
   </div>
-  <div class= "mt-4">
+  <div>
     <%= simple_form_for(@bottle) do |f| %>
-      <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input"} %>
-      <%= f.input :name, placeholder: "Nom", input_html: {class: "background input"} %>
-      <%= f.input :appellation, placeholder: "Appellation", input_html: {class: "background input"} %>
-      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type", input_html: {class: "background input"} %>
-      <%= f.input :vintage, placeholder: "Quelle année", input_html: {class: "background input"} %>
-      <%= f.input :area, placeholder: "Quelle région", input_html: {class: "background input"} %>
-      <%= f.input :variety, placeholder: "Quel cépage", input_html: {class: "background input"} %>
-      <%= f.input :notes, placeholder: "Ajouter une description", input_html: {class: "background input"} %>
+      <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"} %>
+      <%= f.input :name, placeholder: "Nom", input_html: {class: "background input border-input"} %>
+      <%= f.input :appellation, placeholder: "Appellation", input_html: {class: "background input border-input"} %>
+      <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type", input_html: {class: "background input border-input"} %>
+      <%= f.input :vintage, placeholder: "Quelle année", input_html: {class: "background input border-input"} %>
+      <%= f.input :area, placeholder: "Quelle région", input_html: {class: "background input border-input"} %>
+      <%= f.input :variety, placeholder: "Quel cépage", input_html: {class: "background input border-input"} %>
+      <%= f.input :notes, placeholder: "Ajouter une description", input_html: {class: "background input border-input"} %>
 
     <div data-controller= "wine-cellar-slot">
-      <button class="btn btn-secondary btn-lg"
-       data-action="click->wine-cellar-slot#open">
-      Choisir l'emplacement de la bouteille
-      </button>
-
-  <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
-    <div class="cellar-grid">
-       <%= link_to edit_bottle_path(@bottle) do %>
-              <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-35px); top: 25px;">close</i>
+      <div class="d-flex justify-content-between position-relative" style= "top: 33px;">
+        <button class="button small-button-black"
+        data-action="click->wine-cellar-slot#open">
+        Emplacement
+        </button>
+      </div>
+      <div class="d-none slot-selector" data-wine-cellar-slot-target="radioButtons">
+        <div class="cellar-grid">
+          <%= link_to edit_bottle_path(@bottle) do %>
+                  <i class="material-icons material-symbols-sharp", style= "position: absolute; right: 0; transform: translateX(-30px); top: 50px;">close</i>
+                <% end %>
+          <div class="mb-3">
+            <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
+            <%= f.collection_radio_buttons :slot_id, @all_slots, :id, :name do |s| %>
+              <div class="form-check">
+                <%= s.radio_button(class: "form-check-input", disabled: s.object.bottle.present?) %>
+                <%= s.label(class: "form-check-label empty-slot-new") %>
+              </div>
             <% end %>
-      <div class="mb-3">
-        <%= f.label :slot_id, "Emplacements disponibles", class: "label-slot-id" %>
-        <%= f.collection_radio_buttons :slot_id, @available_slots, :id, :name do |s| %>
-          <div class="form-check">
-            <%= s.radio_button(class: "form-check-input") %>
-            <%= s.label(class: "form-check-label") %>
           </div>
-        <% end %>
+
+          <%= f.button :submit, "Valider l'emplacement", class: "button button-black", style: "margin-top: 150px" %>
+        </div>
+
       </div>
 
-      <%= f.button :submit, "Valider l'emplacement" %>
-  </div>
-
-  </div>
-
     <% end %>
+    </div>
   </div>
 </div>

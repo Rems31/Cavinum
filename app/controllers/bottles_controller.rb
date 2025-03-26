@@ -19,20 +19,24 @@ class BottlesController < ApplicationController
 
   def create
     @bottle = Bottle.new(bottle_params)
+    @all_slots = current_user.cellar.slots
     @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
     if @bottle.save
-      redirect_to root_path, notice: "Bouteille créee avec succès."
+      redirect_to root_path, notice: "Bouteille ajoutée avec succès."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @bottle.slot = Slot.find(params[:slot].to_i) if params[:slot].present?
+    @all_slots = current_user.cellar.slots
     @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
   end
 
   def update
     @available_slots = current_user.cellar.slots.includes(:bottle).select { |slot| slot.bottle.nil? }
+    @all_slots = current_user.cellar.slots
     if @bottle.update(bottle_params)
       redirect_to bottle_path(@bottle), notice: "Bouteille modifiée avec succès."
     else
@@ -42,7 +46,7 @@ class BottlesController < ApplicationController
 
   def destroy
     @bottle.destroy
-    redirect_to root_path, status: :see_other, notice: "Bouteille supprimée avec succès."
+    redirect_to root_path, status: :see_other, notice: "Bouteille retirée avec succès."
   end
 
   private

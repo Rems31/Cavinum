@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
 }
 
 .background-modal {
@@ -49,9 +49,8 @@ color: #B9A88F;
 }
 
 .slot-selector .cellar-grid {
-  width: 90%;
-  max-width: 350px;
-  margin: 0 auto;
+  width: 350px;
+  height: 439px;
 }
 
 .label-slot-id {
