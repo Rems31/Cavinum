@@ -16,6 +16,8 @@
 
 .input:focus {
   background-color: #F8E7CF;
+  outline: none;
+  box-shadow: none;
 }
 
 .input {
@@ -23,7 +25,8 @@
 }
 
 .input:focus-visible {
-  border: 3px solid #F8E7CF;
+  border: 1px solid black;
+  outline: none;
 }
 
 .input::placeholder {
@@ -31,11 +34,4 @@
   color: black;
   padding-left: 5px;
   font: 500 italic 16px Inter, sans-serif;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-  background-color: transparent !important;
 }
