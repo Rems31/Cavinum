@@ -8,13 +8,13 @@
   <div>
       <%= simple_form_for(@bottle) do |f| %>
         <%= f.input :photo, placeholder: "Ajouter une photo", input_html: {class: "background input border-input"} %>
-        <%= f.input :name, placeholder: "Nom", input_html: {class: "background input border-input"} %>
-        <%= f.input :appellation, placeholder: "Appellation", input_html: {class: "background input border-input"} %>
+        <%= f.input :name, placeholder: "Chateaux Grenouille, Hermitage, ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :appellation, placeholder: "Romanée-Conti, Chablis, ...", input_html: {class: "background input border-input"} %>
         <%= f.input :kind, collection: ["Blanc", "Rouge", "Rosé"], prompt: "Selectionner un type", input_html: {class: "background input border-input"} %>
-        <%= f.input :vintage, placeholder: "Millésime", input_html: {class: "background input border-input"} %>
-        <%= f.input :area, placeholder: "Région", input_html: {class: "background input border-input"} %>
-        <%= f.input :variety, placeholder: "Cépage", input_html: {class: "background input border-input"} %>
-        <%= f.input :notes, placeholder: "Notes", input_html: {class: "background input border-input"} %>
+        <%= f.input :vintage, placeholder: "2017", input_html: {class: "background input border-input"} %>
+        <%= f.input :area, placeholder: "Bourgogne, Bordeaux, ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :variety, placeholder: "Syrah, Chardonnay, ...", input_html: {class: "background input border-input"} %>
+        <%= f.input :notes, placeholder: "Élégant et subtil, à servir avec une viande rouge...", input_html: {class: "background input border-input"} %>
 
 
       <div data-controller= "wine-cellar-slot">
